@@ -7,7 +7,7 @@ import sys
 import customtkinter as ctk
 from PIL import Image, ImageTk
 from PPTX import gerar_pptx
-from tkinter import filedialog
+from customtkinter import filedialog
 from FIND import LyricSearchApp
 from LINKS import LinkProcessorApp
 from DIRECTORY import documents
@@ -150,14 +150,15 @@ class MusicSlidesApp(ctk.CTk):
             files = filedialog.askopenfilenames(
                 title="Selecione os Arquivos",
                 initialdir="~",
-                filetypes=[("Arquivos de Texto", "*.txt")]
+                filetypes=[("Arquivos de Texto", "*.txt")],
+                multiple=True
             )
 
             if not files:
                 return
 
             # Caminho padrão para salvar
-            _path_ = f'{documents}/LETRAS_PROJETOR'
+            _path_ = f'{documents}/DATASHOW'
 
             if not os.path.exists(_path_):
                 os.makedirs(_path_, exist_ok=True)
