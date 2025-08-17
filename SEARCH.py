@@ -12,7 +12,7 @@ CX = os.getenv("GOOGLE_ID_CX")  # Seu ID de motor de busca
 
 # Função para buscar no Google Custom Search
 def search_google(query):
-    url = f'https://www.googleapis.com/customsearch/v1?q={query}&key={API_KEY}&cx={CX}&num=5'
+    url = f'https://www.googleapis.com/customsearch/v1?q={query}&key={API_KEY}&cx={CX}&num=7'
     response = requests.get(url)
 
     if response.status_code == 200:
