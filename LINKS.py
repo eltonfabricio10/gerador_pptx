@@ -136,7 +136,8 @@ class LinkProcessorApp(ctk.CTkToplevel):
         )
         self.result_caption.pack(pady=(15, 5))
 
-        self.text_var = tk.StringVar()
+        self.init_text = "Digite a URL da letra no campo acima."
+        self.text_var = tk.StringVar(value=self.init_text)
 
         # Área de resultado com rolagem
         self.result_box = ctk.CTkScrollableFrame(
@@ -155,7 +156,7 @@ class LinkProcessorApp(ctk.CTkToplevel):
 
     def on_clear_button(self):
         self.url_entry.delete(0, tk.END)
-        self.text_var.set("")
+        self.text_var.set(self.init_text)
 
     def on_process_button(self):
         base_url = self.url_entry.get()

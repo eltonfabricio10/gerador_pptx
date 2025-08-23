@@ -5,9 +5,9 @@ from SAVE import salvar_letra
 import customtkinter as ctk
 import tkinter as tk
 import os
-from tkinter import messagebox, scrolledtext
 import threading
 from PIL import Image, ImageTk
+from CTkMessagebox import CTkMessagebox as ctkbox
 
 ctk.set_appearance_mode("system")
 ctk.set_default_color_theme("blue")
@@ -195,8 +195,17 @@ class LyricSearchApp(ctk.CTkToplevel):
         except Exception as e:
             self.show_message(f"Erro ao salvar: {str(e)}")
 
-    def show_message(self, message):
-        messagebox.showinfo("Aviso", message)
+    def show_message(self, msg):
+        # Janela de diálogo
+        ctkbox(
+            master=self,
+            title="Buscar Letras",
+            message=msg,
+            icon="warning",
+            justify="center",
+            width=300,
+            height=100
+        )
 
 
 def main():

@@ -109,7 +109,7 @@ def salvar_letra(url, folder=None, get_text=False):
             # Gera nome do arquivo a partir do título da página
             title = soup.title.string.strip() if soup.title else "letra"
             title = char_accents(title)
-            path = os.path.expanduser(f'{documents}/LETRAS_PROJETOR')
+            path = os.path.expanduser(f'{documents}/DATASHOW')
 
             if not os.path.exists(path):
                 os.makedirs(path, exist_ok=True)

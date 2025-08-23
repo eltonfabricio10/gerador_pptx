@@ -101,7 +101,7 @@ def gerar_pptx(caminho, lista_arquivos=None):
                         ppt.font.color.theme_color = MSO_THEME_COLOR.LIGHT_1
 
             except Exception as e:
-                print(f"Erro ao processar o arquivo {arquivo}: {e}")
+                return "Erro ao processar o arquivo {arquivo}: {e}"
 
         # Salva a apresentação gerada
         filename = f'{caminho}/apresentacao-{time()}.pptx'
