@@ -136,7 +136,7 @@ class LinkProcessorApp(ctk.CTkToplevel):
         )
         self.result_caption.pack(pady=(15, 5))
 
-        self.init_text = "Digite a URL da letra no campo acima."
+        self.init_text = "Insira a URL da letra no campo acima."
         self.text_var = tk.StringVar(value=self.init_text)
 
         # Área de resultado com rolagem
