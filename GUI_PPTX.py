@@ -21,7 +21,7 @@ class MusicSlidesApp(ctk.CTk):
         # Configurações da janela
         self.text_title = "Gerador de Slides"
         self.title(self.text_title)
-        self.geometry("400x200")
+        self.center(self, 400, 200)
 
         # Configuração do tema
         ctk.set_appearance_mode("system")
@@ -118,6 +118,18 @@ class MusicSlidesApp(ctk.CTk):
             hover_color="#da190b"
         )
         self.cancel_button.pack(side="right", expand=True, padx=10)
+
+    def center(self, window, largura=400, altura=300):
+        # Obtém largura e altura da tela
+        largura_tela = window.winfo_screenwidth()
+        altura_tela = window.winfo_screenheight()
+
+        # Calcula posição x e y para centralizar
+        x = (largura_tela // 2) - (largura // 2)
+        y = (altura_tela // 2) - (altura // 2)
+
+        # Define geometria da window
+        window.geometry(f"{largura}x{altura}+{x}+{y}")
 
     def load_icon(self, filename, size=(20, 20)):
         # Método para carregar ícones

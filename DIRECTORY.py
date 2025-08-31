@@ -12,13 +12,12 @@ if platform.system() == "Linux":
     ).strip()
 
 elif platform.system() == "Windows":
-    CSIDL_PERSONAL = 0x0005  # Constant for My Documents folder
+    CSIDL_PERSONAL = 0x0005  # My Documents
     buf = ctypes.create_unicode_buffer(MAX_PATH + 1)
-    cty = ctypes.windll.shell32.SHGetSpecialFolderPathW()
-    if cty(None, buf, CSIDL_PERSONAL, False):
-        documents = buf.value
-    else:
-        documents = None
+    result = ctypes.windll.shell32.SHGetSpecialFolderPathW(
+        None, buf, CSIDL_PERSONAL, False
+    )
+    documents = buf.value if result else None
 
 else:
     documents = Path.home() / 'Documents'
