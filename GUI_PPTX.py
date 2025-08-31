@@ -12,7 +12,6 @@ from FIND import LyricSearchApp
 from LINKS import LinkProcessorApp
 from DIRECTORY import documents
 from CTkMessagebox import CTkMessagebox as ctkbox
-from DIALOG import FileSelector
 
 
 class MusicSlidesApp(ctk.CTk):
@@ -148,17 +147,12 @@ class MusicSlidesApp(ctk.CTk):
     def show_open_dialog(self):
         try:
             # Abre diálogo de seleção de arquivos
-            # files = filedialog.askopenfilenames(
-            #     title="Selecione os Arquivos",
-            #     initialdir="~",
-            #     filetypes=[("Arquivos de Texto", "*.txt")],
-            #     multiple=True
-            # )
-            home = os.path.expanduser("~")
-            dialog = FileSelector(initialdir=home)
-            self.wait_window(dialog)
-            files = dialog.selected_files
-            # print(files)
+            files = filedialog.askopenfilenames(
+                title="Selecione os Arquivos",
+                initialdir="~",
+                filetypes=[("Arquivos de Texto", "*.txt")],
+                multiple=True
+            )
 
             if not files:
                 return

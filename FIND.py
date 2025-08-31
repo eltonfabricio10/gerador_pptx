@@ -75,12 +75,23 @@ class LyricSearchApp(ctk.CTkToplevel):
         self.results_frame = ctk.CTkScrollableFrame(self.main_frame)
         self.results_frame.pack(fill="both", expand=True, padx=10, pady=10)
 
+        self.text_init()
+
         # Variável de controle para pesquisa
         self.search_var = tk.StringVar()
         self.search_var.trace("w", self.on_search_changed)
 
         # Configurar entrada para usar variável de controle
         self.search_entry.configure(textvariable=self.search_var)
+
+    def text_init(self):
+        init_text = "Pesquise a letra da música no campo acima."
+        result_text = ctk.CTkLabel(
+            self.results_frame,
+            text=init_text,
+            wraplength=480
+        )
+        result_text.pack()
 
     def on_clear_button_clicked(self):
         self.search_entry.delete(0, tk.END)
@@ -100,6 +111,7 @@ class LyricSearchApp(ctk.CTkToplevel):
 
         query = self.search_entry.get().lower()
         if not query:
+            self.text_init()
             return
 
         # Executar busca em thread separada

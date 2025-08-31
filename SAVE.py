@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import requests
 from bs4 import BeautifulSoup
@@ -85,6 +86,9 @@ def salvar_letra(url, folder=None, get_text=False):
         if url.startswith("https://musica-liturgica.net/"):
             letra_all_div = soup.find_all("div", class_="letra")
 
+        if url.startswith("https://cindyferrarezi.com/"):
+            letra_div = soup.find(id="meuPopupUnico")
+
         if not letra_div and not letra_all_div:
             letra_all_div = soup.find_all("div", class_="MsoNormal")
             if not letra_all_div:
@@ -139,3 +143,10 @@ def salvar_letra(url, folder=None, get_text=False):
         return False, f"Erro de requisição: {e}"
     except Exception as e:
         return False, f"Erro inesperado: {e}"
+
+
+if __name__ == '__main__':
+    import sys
+    uri = sys.argv[1]
+    ok, text = salvar_letra(uri, get_text=True)
+    print(ok, text)
